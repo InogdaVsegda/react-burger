@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './app.module.css';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
@@ -16,6 +16,9 @@ function App() {
   React.useEffect(() => {
     const getData = async () => {
       const res = await fetch(URL);
+      if (!res.ok) {
+        throw Error()
+      }
       const productData = await res.json();
       setState({ productData: productData.data });
     }
@@ -32,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <AppHeader/>
-      <main className='container'>
+      <main className={styles.container}>
         <BurgerIngredients productData={state.productData}/>
         <BurgerConstructor productData={state.productData}/>
       </main>

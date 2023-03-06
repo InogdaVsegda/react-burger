@@ -8,6 +8,19 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components'
 
 function Modal(props) {
+
+    React.useEffect(() => {
+        const escFunction = (event) => {
+            if (event.key === "Escape") {
+                props.handleClick()
+            }
+        };
+        
+        document.addEventListener("keydown", escFunction, false);
+        return () => {
+            document.removeEventListener("keydown", escFunction, false);
+        };
+    }, [props]);
   
     return (
         <div className={styles.modal}>

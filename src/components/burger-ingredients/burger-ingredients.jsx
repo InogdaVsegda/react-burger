@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import ModalOverlay from '../modal-overlay/modal-overlay';
+import IngredientDetails from '../ingredient-details/ingredient-details';
 import styles from './burger-ingredients.module.css';
 import { 
     Tab
@@ -68,6 +68,7 @@ function BurgerIngredients(props) {
         })
 
         return result
+        // eslint-disable-next-line
     }, [props.productData])
 
     const [current, setCurrent] = React.useState('Булки')
@@ -100,30 +101,10 @@ function BurgerIngredients(props) {
                 {main && main.map(el => el)}
             </ul>
         </div>
-        <ModalOverlay isOpened={isModalOpened} heading='Детали ингредиента' handleClick={togglePopup}>
-            <img src={currentIngredient?.image} alt={currentIngredient?.name} className={`mb-4 ${styles.modal_image}`}/>
-            <p className={`text text_type_main-medium mb-8 ${styles.modal_text}`}>
-            {currentIngredient?.name}
-            </p>
-            <ul className={`mb-5 ${styles.modal_details}`}>
-                <li className={styles.modal_detail}>
-                    <p className="text text_type_main-default text_color_inactive mb-2">Калории,ккал</p>
-                    <p className="text text_type_digits-default text_color_inactive">{currentIngredient?.calories}</p>
-                </li>
-                <li className={styles.modal_detail}>
-                    <p className="text text_type_main-default text_color_inactive mb-2">Белки, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">{currentIngredient?.proteins}</p>
-                </li>
-                <li className={styles.modal_detail}>
-                    <p className="text text_type_main-default text_color_inactive mb-2">Жиры, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">{currentIngredient?.fat}</p>
-                </li>
-                <li className={styles.modal_detail}>
-                    <p className="text text_type_main-default text_color_inactive mb-2">Углеводы, г</p>
-                    <p className="text text_type_digits-default text_color_inactive">{currentIngredient?.carbohydrates}</p>
-                </li>
-            </ul>
-        </ModalOverlay>
+        {isModalOpened && <IngredientDetails 
+            heading='Детали ингредиента'
+            handleClick={togglePopup}
+            currentIngredient={currentIngredient}/>}
       </section>
     );
   }

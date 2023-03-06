@@ -1,10 +1,6 @@
 import React from 'react';
-import { createPortal } from 'react-dom';
-import Modal from '../modal/modal';
 import styles from './modal-overlay.module.css';
 import { modalOverlayPropTypes } from '../../utils/types'
-
-const modalRoot = document.getElementById("react-modals");
 
 function ModalOverlay(props) {
 
@@ -16,23 +12,17 @@ function ModalOverlay(props) {
         }
     }
   
-    return createPortal(
-        (
+    return (
             <div 
-                style={{visibility: props.isOpened ? 'visible' : 'hidden'}}
                 className={styles.overlay}
                 ref={overlay}
                 onClick={handleClose}
             >
                 <div className={`p-10 ${styles.container}`}>
-                    <Modal heading={props.heading} handleClick={props.handleClick}>
-                        {props.children}
-                    </Modal>
+                    {props.children}
                 </div>
             </div>
-        ),
-        modalRoot
-    );
+        )
   }
   
 export default ModalOverlay;

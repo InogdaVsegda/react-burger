@@ -1,5 +1,5 @@
 .overlay {
-    visibility: hidden;
+    /* visibility: hidden; */
     position: fixed;
     display: flex;
     justify-content: center;

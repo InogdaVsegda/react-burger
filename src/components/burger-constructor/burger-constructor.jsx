@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalOverlay from '../modal-overlay/modal-overlay';
+import OrderDetails from '../order-details/order-details';
 import styles from './burger-constructor.module.css';
 import PropTypes from 'prop-types'
 import { 
@@ -34,19 +34,6 @@ function BurgerConstructor(props) {
     const togglePopup = (e) => {
         setModalOpened(!isModalOpened)
     }
-
-    const escFunction = React.useCallback((event) => {
-        if (event.key === "Escape") {
-            setModalOpened(false)
-        }
-    }, []);
-
-    React.useEffect(() => {
-        document.addEventListener("keydown", escFunction, false);
-        return () => {
-            document.removeEventListener("keydown", escFunction, false);
-        };
-    }, [escFunction]);
     
   
     return (
@@ -79,19 +66,7 @@ function BurgerConstructor(props) {
             Оформить заказ
         </Button>
         </div>
-        <ModalOverlay isOpened={isModalOpened} heading='' handleClick={togglePopup}>
-            <p className={`text text_type_digits-large mb-8 ${styles.modal_order}`}>034536</p>
-            <p className={`text text_type_main-medium mb-15 ${styles.modal_text}`}>
-            идентификатор заказа
-            </p>
-            <div className={`mb-15 ${styles.modal_icon}`}></div>
-            <p className={`text text_type_main-default mb-2 ${styles.modal_text}`}>
-                Ваш заказ начали готовить
-            </p>
-            <p className={`text text_type_main-default text_color_inactive mb-20 ${styles.modal_text}`}>
-                Дождитесь готовности на орбитальной станции
-            </p>
-        </ModalOverlay>
+        {isModalOpened && <OrderDetails handleClick={togglePopup}/>}
       </section>
     );
   }

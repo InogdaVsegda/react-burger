@@ -19,12 +19,12 @@ export const ingredientPropTypes = {
 }
 
 export const modalOverlayPropTypes = {
-    isOpened: PropTypes.bool.isRequired,
-    heading: PropTypes.string.isRequired,
+    // isOpened: PropTypes.bool.isRequired,
+    // heading: PropTypes.string.isRequired,
     handleClick: PropTypes.func.isRequired
 }
 
 export const modalPropTypes = {
-    heading: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired
+    // heading: PropTypes.string.isRequired,
+    // handleClick: PropTypes.func.isRequired
 }
