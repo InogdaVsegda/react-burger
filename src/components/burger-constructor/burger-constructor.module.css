@@ -5,12 +5,13 @@
 
 .main_container {
     min-width: 584px;
+    min-height: 450px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 16px;
     max-height: 464px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .bun {

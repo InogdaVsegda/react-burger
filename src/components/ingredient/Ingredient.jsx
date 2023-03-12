@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDrag } from "react-dnd";
 import { ingredientPropTypes } from '../../utils/types'
 
 import styles from './ingredient.module.css';
@@ -7,18 +8,34 @@ import {
     CurrencyIcon,
     Counter
 } from '@ya.praktikum/react-developer-burger-ui-components'
+import { useSelector } from 'react-redux';
 
 function Ingredient(props) {
-  
+
+    const {name, type, price, image, handleClick} = props;
+    const id = props._id 
+
+    const { addedIngr } = useSelector(state => state.constructorReducer )
+
+    const count = React.useMemo(() => {
+      return addedIngr?.filter(el => el.id === id).length
+    }, [addedIngr, id])
+
+    const [, dragIngr] = useDrag({
+      type: 'ingredient',
+      item: {id},
+      typeOfIngr: {type},
+    });
+    
     return (
-      <li className={styles.item} id={props.id} onClick={props.handleClick}>
-        <img src={props.image} alt={props.name} />
+      <li className={styles.item} id={id} onClick={handleClick} ref={dragIngr}>
+        <img src={image} alt={name} />
         <div className={styles.price}>
-            <p className='text text_type_digits-default mr-2'>{props.price}</p>
+            <p className='text text_type_digits-default mr-2'>{price}</p>
             <CurrencyIcon type="primary" />
         </div>
-        <p className={`text text_type_main-default ${styles.name}`}>{props.name}</p>
-        <Counter count={1} size="default" extraClass="m-1" />
+        <p className={`text text_type_main-default ${styles.name}`}>{name}</p>
+        { count > 0 && <Counter count={count} size="default" extraClass="m-1" /> }
       </li>
     );
   }

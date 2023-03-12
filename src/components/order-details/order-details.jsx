@@ -3,9 +3,7 @@ import { createPortal } from 'react-dom';
 import Modal from '../modal/modal';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import styles from './order-details.module.css';
-// import PropTypes from 'prop-types'
 
-// import { APIPropTypes } from '../../utils/types'
 const modalRoot = document.getElementById("react-modals");
 
 
@@ -31,7 +29,3 @@ function OrderDetails({handleClick}) {
   }
   
 export default OrderDetails;
-
-// BurgerConstructor.propTypes = {
-//     ingredients: PropTypes.arrayOf(APIPropTypes)
-// }
