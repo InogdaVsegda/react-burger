@@ -1,0 +1,26 @@
+.burger_ingredients {
+    max-width: 600px;
+}
+
+.heading {
+    text-align: left;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    max-height: 67vh;
+    overflow: auto;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 32px;
+}
+
+.list_heading {
+    text-align: left;
+}
+
