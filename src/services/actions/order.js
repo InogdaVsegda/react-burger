@@ -11,7 +11,6 @@ export function getOrderNumber(currentOrder) {
       });
       postOrder(currentOrder).then(res => {
         if (res && res.success) {
-          console.log(res)
           dispatch({
             type: 'GET_ORDER_SUCCESS',
             order: res.order.number
