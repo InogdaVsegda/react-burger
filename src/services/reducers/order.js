@@ -1,12 +1,12 @@
 import { 
-    GET_INGREDIENTS_REQUEST, 
-    GET_INGREDIENTS_FAILED, 
-    GET_INGREDIENTS_SUCCESS 
-} from "../actions/ingredients"
+    GET_ORDER_REQUEST, 
+    GET_ORDER_FAILED, 
+    GET_ORDER_SUCCESS 
+} from "../actions/order"
 
 const initialState = [
     {
-        order: '',
+        order: null,
         orderFailed: false,
         orderRequest: false
     }
@@ -14,21 +14,21 @@ const initialState = [
 
 export const orderReducer = (state = initialState, action) => {
     switch(action.type) {
-        case GET_INGREDIENTS_REQUEST: {
+        case GET_ORDER_REQUEST: {
             return {
                 ...state,
                 orderFailed: false,
                 orderRequest: true
             };
         }
-        case GET_INGREDIENTS_SUCCESS: {
+        case GET_ORDER_SUCCESS: {
         return {
             ...state,
             orderRequest: false,
             order: action.order
         }
         }
-        case GET_INGREDIENTS_FAILED: {
+        case GET_ORDER_FAILED: {
         return {
             ...state,
             orderFailed: true,

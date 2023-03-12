@@ -13,6 +13,9 @@ export const getData = () => {
 export const postOrder = (ingredients) => {
   return fetch(orderURL, {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
     body: JSON.stringify({ ingredients })
   }).then((res) => {
     if (!res.ok) {
