@@ -8,6 +8,7 @@ import {
 
 import Ingredient from '../ingredient/Ingredient';
 import { getIngredients } from '../../services/actions/ingredients';
+import { SET_CURRENT_INGREDIENT } from '../../services/actions/currentIngr';
 
 function BurgerIngredients() {
     const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function BurgerIngredients() {
                     {...product}
                     handleClick={(e) => {
                         dispatch({
-                            type: 'SET_CURRENT_INGREDIENT',
+                            type: SET_CURRENT_INGREDIENT,
                             currentIngr: product
                         })
                         togglePopup()

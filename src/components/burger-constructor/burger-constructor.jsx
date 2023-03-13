@@ -11,6 +11,7 @@ import {
 
 import { getOrderNumber } from '../../services/actions/order';
 import BurgerConstructorItem from './burger-constructor-item';
+import { DELETE_INGR_CONSTRUCTOR, ADD_INGR_CONSTRUCTOR } from '../../services/actions/ingrConstructor';
 
 function BurgerConstructor() {
     const { ingredients } = useSelector(state => state.ingredientsReducer)
@@ -29,7 +30,7 @@ function BurgerConstructor() {
     const dispatch = useDispatch()
 
     React.useEffect(() => {
-        dispatch({ type: 'ADD_INGR_CONSTRUCTOR', payload: {
+        dispatch({ type: ADD_INGR_CONSTRUCTOR, payload: {
             id: ingredients?.length && ingredients[0]._id,
             type: 'bun'
         } })
@@ -39,7 +40,7 @@ function BurgerConstructor() {
         accept : "ingredient",
         drop(item) {
             const itemType = ingredients.find(el => el._id === item.id)?.type
-            dispatch({ type: 'ADD_INGR_CONSTRUCTOR', payload: {
+            dispatch({ type: ADD_INGR_CONSTRUCTOR, payload: {
                 id: item.id,
                 type: itemType
             } })
@@ -51,7 +52,7 @@ function BurgerConstructor() {
     });
 
     const handleClose = (id, index) => {
-        dispatch({ type: 'DELETE_INGR_CONSTRUCTOR',
+        dispatch({ type: DELETE_INGR_CONSTRUCTOR,
             id,
             index
         })
