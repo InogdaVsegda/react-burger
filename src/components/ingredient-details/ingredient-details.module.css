@@ -1,0 +1,28 @@
+.modal_image {
+    align-self: center;
+    height: 240px;
+}
+
+.modal_text {
+    align-self: center; 
+}
+
+.modal_details {
+    display: flex;
+    align-self: center;
+    gap: 20px;
+    padding: 0;
+    margin-top: 0;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.modal_detail {
+    display: flex;
+    flex-direction: column;
+    min-width: 112px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    
+}

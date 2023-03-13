@@ -1,0 +1,37 @@
+.burger_constructor {
+    width: 600px;
+    box-sizing: border-box;
+}
+
+.main_container {
+    min-width: 584px;
+    min-height: 450px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 464px;
+    overflow-y: auto;
+}
+
+.bun {
+    margin-left: 48px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.summary > svg {
+    width: 36px;
+    height: 36px;
+    margin-right: 40px;
+}
